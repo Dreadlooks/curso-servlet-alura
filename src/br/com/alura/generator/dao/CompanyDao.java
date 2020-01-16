@@ -2,7 +2,10 @@ package br.com.alura.generator.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.alura.generator.models.Company;
 
@@ -27,4 +30,25 @@ public class CompanyDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<Company> findAll() {
+		List<Company> all = new ArrayList<>();
+		String sql = "select * from company";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Long id = rs.getLong("id");
+				String name = rs.getString("name");
+
+				all.add(new Company(name));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+
+		return all;
+	} 
 }

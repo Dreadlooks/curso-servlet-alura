@@ -2,7 +2,7 @@ package br.com.alura.generator.models;
 
 public class Company {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	
 	public Company(String name) {
@@ -10,10 +10,16 @@ public class Company {
 		this.name = name;
 	}
 	
-	public Integer getId() {
+	public Company(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

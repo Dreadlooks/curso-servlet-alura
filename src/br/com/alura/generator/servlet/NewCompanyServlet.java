@@ -30,4 +30,21 @@ public class NewCompanyServlet extends HttpServlet {
 		writer.println("</h1>");
 		writer.println("</body>");
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		CompanyDao companyDao = new CompanyDao();
+		
+		PrintWriter out = resp.getWriter();
+        out.println("<html><body>");
+        out.print("<th>");
+        out.print("Empresas");
+        out.print("</th>");
+        out.println("<ul>");
+        for (Company company: companyDao.findAll()) { 
+            out.println("<li>" + company.getName() + "</li>");
+        }        
+        out.println("</ul>");
+        out.println("</body></html>");
+	}
 }
