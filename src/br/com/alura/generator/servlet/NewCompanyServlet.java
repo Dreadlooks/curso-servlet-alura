@@ -27,7 +27,7 @@ public class NewCompanyServlet extends HttpServlet {
 		
 		CompanyDao companyDao = new CompanyDao();
 		Company company = new Company(name, openingDate);
-//		companyDao.save(company);
+		companyDao.save(company);
 		
 //		writer.println("<body>");
 //		writer.println("<h1>");
@@ -35,8 +35,9 @@ public class NewCompanyServlet extends HttpServlet {
 //		writer.println("</h1>");
 //		writer.println("</body>");
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/newcompany.jsp");
-		req.setAttribute("company", company.getName());
-		rd.forward(req, resp);
+//		RequestDispatcher rd = req.getRequestDispatcher("/newcompany.jsp");
+		resp.sendRedirect("listCompany");
+//		req.setAttribute("company", company.getName());
+//		rd.forward(req, resp);
 	}
 }
