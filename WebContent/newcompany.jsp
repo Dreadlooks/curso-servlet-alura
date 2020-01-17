@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
-String name = (String) request.getAttribute("company");
+	String name = (String) request.getAttribute("company");
 %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +10,7 @@ String name = (String) request.getAttribute("company");
 <title>New Company</title>
 </head>
 <body>
-<p>Empresa <%= name %> cadastrada com sucesso!</p>
+	<%-- <p>Empresa <%= name %> cadastrada com sucesso!</p> --%>
+	<p>Empresa ${company} cadastrada com sucesso!</p>
 </body>
 </html>

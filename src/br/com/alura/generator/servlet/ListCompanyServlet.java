@@ -1,6 +1,7 @@
 package br.com.alura.generator.servlet;
 
 import java.io.IOException;
+import java.util.TimeZone;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +18,6 @@ public class ListCompanyServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CompanyDao companyDao = new CompanyDao();
-		
 //		PrintWriter out = resp.getWriter();
 //        out.println("<html><body>");
 //        out.print("<th>");
@@ -30,7 +30,7 @@ public class ListCompanyServlet extends HttpServlet{
 //        out.println("</ul>");
 //        out.println("</body></html>");
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/listcompany.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/listcompany.jsp");
 		req.setAttribute("list", companyDao.findAll());
 		rd.forward(req, resp);
 	}

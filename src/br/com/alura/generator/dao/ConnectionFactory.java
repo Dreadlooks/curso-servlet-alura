@@ -11,7 +11,8 @@ public class ConnectionFactory {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			return DriverManager
-					.getConnection("jdbc:mysql://localhost/fj21", "root", "mudar123");
+					.getConnection("jdbc:mysql://localhost/fj21?serverTimezone=America/Sao_Paulo",
+							"root", "mudar123");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} catch (ClassNotFoundException e) {
