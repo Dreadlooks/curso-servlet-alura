@@ -3,6 +3,7 @@ package br.com.alura.generator.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,27 +25,14 @@ public class NewCompanyServlet extends HttpServlet {
 		Company company = new Company(name);
 		companyDao.save(company);
 		
-		writer.println("<body>");
-		writer.println("<h1>");
-		writer.println("Bem vindo à " + company.getName() + " !");
-		writer.println("</h1>");
-		writer.println("</body>");
-	}
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		CompanyDao companyDao = new CompanyDao();
+//		writer.println("<body>");
+//		writer.println("<h1>");
+//		writer.println("Bem vindo à " + company.getName() + " !");
+//		writer.println("</h1>");
+//		writer.println("</body>");
 		
-		PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.print("<th>");
-        out.print("Empresas");
-        out.print("</th>");
-        out.println("<ul>");
-        for (Company company: companyDao.findAll()) { 
-            out.println("<li>" + company.getName() + "</li>");
-        }        
-        out.println("</ul>");
-        out.println("</body></html>");
+		RequestDispatcher rd = req.getRequestDispatcher("/newcompany.jsp");
+		req.setAttribute("company", company.getName());
+		rd.forward(req, resp);
 	}
 }
