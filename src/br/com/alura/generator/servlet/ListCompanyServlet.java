@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.generator.dao.CompanyDao;
 
 @WebServlet("/listCompany")
-public class ListCompanyServlet extends HttpServlet{
+public class ListCompanyServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

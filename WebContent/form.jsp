@@ -14,7 +14,7 @@
 	<br/>
 	<br/>
 	<label for="openingDate">Data de abertura:</label>
-	<input type="Date" id="openingDate" name="openingDate">
+	<input type="date" id="openingDate" name="openingDate">
 	<br/>
 	<input type="submit" value="Enviar">
 </form>

@@ -58,5 +58,54 @@ public class CompanyDao {
 		}
 
 		return all;
-	} 
+	}
+	
+	public void delete(Long id) {
+		String sql = "delete from company where id=?";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setLong(1, id);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Company findById(Long id) {
+		String sql = "select * from company where id=?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setLong(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				return new Company(rs.getLong("id"), rs.getString("name"), 
+						DateHelper.getCalendarFromDate(rs.getDate("openingDate")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}		
+		return new Company();
+	}
+	
+	public void update(Company company) {
+		String sql = "update company set name=?, openingDate=? where id=?";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, company.getName());
+			stmt.setDate(2, new Date(company.getOpeningDate()
+					.getTimeInMillis()));
+			stmt.setLong(3, company.getId());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

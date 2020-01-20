@@ -8,6 +8,8 @@ public class Company {
 	private String name;
 	private Calendar openingDate;
 	
+	public Company() {}
+	
 	public Company(String name, Calendar openingDate) {
 		super();
 		this.name = name;

@@ -17,6 +17,8 @@
 		<tr>
 			<td>Empresas</td>
 			<td>Data de abertura</td>
+			<td>Atualizar</td>
+			<td>Remover</td>
 		</tr>
 
 		<c:forEach items="${list}" var="company">
@@ -24,6 +26,8 @@
 				<td>${company.name}</td>
 				<td><fmt:formatDate value="${company.openingDate.time}"
 						pattern="dd/MM/yyyy" /></td>
+				<td><a href="/curso-servlet-alura/company-detail?id=${company.id}">atualiza</a></td>
+				<td><a href="/curso-servlet-alura/company-remove?id=${company.id}">remove</a></td>
 			</tr>
 		</c:forEach>
 	</table>
